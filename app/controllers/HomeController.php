@@ -6,7 +6,9 @@
     use Carbon\Carbon;
     class HomeController extends BaseController{
         public function index(){
-            $cate_all = Category::all();
+            $parent = Category::where('id_grade',0)->get();
+            $parent->load('get_child');
+            
         }
         public function login(){
             $this->render('loginadmin.loginForm');
